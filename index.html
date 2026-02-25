@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selenium Practice Locators</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="nav-logo">🎯 Selenium Practice</h1>
+            <ul class="nav-menu">
+                <li><a href="#inputs" class="nav-link">Inputs</a></li>
+                <li><a href="#buttons" class="nav-link">Buttons</a></li>
+                <li><a href="#advanced-interactions" class="nav-link">Interactions</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Selenium Locators Practice Website</h1>
+            <p>Master WebDriver locators with interactive examples and auto-generated code snippets</p>
+        </div>
+    </header>
+
+    <!-- Code Popup Modal -->
+    <div id="codeModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Selenium Code</h3>
+                <button class="modal-close" onclick="closeCodeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="explanationSection" class="explanation-section">
+                    <h4>How to use:</h4>
+                    <p id="modalExplanation"></p>
+                </div>
+                <h4>Selenium Code:</h4>
+                <div id="modalCode" class="modal-code"></div>
+                <button class="btn btn-copy" onclick="copyToClipboard()">📋 Copy Code</button>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section id="inputs" class="section">
+            <h2>Input Fields</h2>
+            <div class="element-container">
+                <label for="text-input">Text Input:</label>
+                <input type="text" id="text-input" name="textInput" placeholder="Enter text here">
+                <button class="icon-btn" onclick="showSeleniumCode('text-input')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <label for="password-input">Password Input:</label>
+                <input type="password" id="password-input" name="passwordInput" placeholder="Enter password">
+                <button class="icon-btn" onclick="showSeleniumCode('password-input')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <label for="email-input">Email Input:</label>
+                <input type="email" id="email-input" name="emailInput" placeholder="Enter email">
+                <button class="icon-btn" onclick="showSeleniumCode('email-input')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <label for="number-input">Number Input:</label>
+                <input type="number" id="number-input" name="numberInput" value="0">
+                <button class="icon-btn" onclick="showSeleniumCode('number-input')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <label for="date-input">Date Input:</label>
+                <input type="date" id="date-input" name="dateInput">
+                <button class="icon-btn" onclick="showSeleniumCode('date-input')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <label for="file-input">File Input:</label>
+                <input type="file" id="file-input" name="fileInput">
+                <button class="icon-btn" onclick="showSeleniumCode('file-input')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <label for="color-input">Color Input:</label>
+                <input type="color" id="color-input" name="colorInput" value="#007bff">
+                <button class="icon-btn" onclick="showSeleniumCode('color-input')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <label for="range-input">Range Input:</label>
+                <input type="range" id="range-input" name="rangeInput" min="0" max="100" value="50">
+                <button class="icon-btn" onclick="showSeleniumCode('range-input')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <label for="search-input">Search Input:</label>
+                <input type="search" id="search-input" name="searchInput" placeholder="Search...">
+                <button class="icon-btn" onclick="showSeleniumCode('search-input')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <label for="url-input">URL Input:</label>
+                <input type="url" id="url-input" name="urlInput" placeholder="https://example.com">
+                <button class="icon-btn" onclick="showSeleniumCode('url-input')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <label for="datetime-local-input">DateTime-Local Input:</label>
+                <input type="datetime-local" id="datetime-local-input" name="datetimeLocalInput">
+                <button class="icon-btn" onclick="showSeleniumCode('datetime-local-input')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <label for="time-input">Time Input:</label>
+                <input type="time" id="time-input" name="timeInput">
+                <button class="icon-btn" onclick="showSeleniumCode('time-input')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <label for="month-input">Month Input:</label>
+                <input type="month" id="month-input" name="monthInput">
+                <button class="icon-btn" onclick="showSeleniumCode('month-input')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <label for="week-input">Week Input:</label>
+                <input type="week" id="week-input" name="weekInput">
+                <button class="icon-btn" onclick="showSeleniumCode('week-input')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <label for="disabled-input">Disabled Input:</label>
+                <input type="text" id="disabled-input" name="disabledInput" value="Disabled" disabled>
+                <button class="icon-btn" onclick="showSeleniumCode('disabled-input')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <label for="readonly-input">Read-only Input:</label>
+                <input type="text" id="readonly-input" name="readonlyInput" value="Read-only" readonly>
+                <button class="icon-btn" onclick="showSeleniumCode('readonly-input')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <label for="autocomplete-input">Autocomplete Input:</label>
+                <input type="text" id="autocomplete-input" name="autocompleteInput" list="fruits">
+                <datalist id="fruits">
+                    <option value="Apple">
+                    <option value="Banana">
+                    <option value="Cherry">
+                    <option value="Date">
+                    <option value="Elderberry">
+                </datalist>
+                <button class="icon-btn" onclick="showSeleniumCode('autocomplete-input')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <input type="hidden" id="hidden-input" name="hiddenInput" value="hidden value">
+                <p>Hidden input (not visible, but present in DOM)</p>
+                <button class="icon-btn" onclick="showSeleniumCode('hidden-input')" title="View Selenium Code">📄</button>
+            </div>
+        </section>
+
+        <section id="buttons" class="section">
+            <h2>Buttons</h2>
+            <div class="element-container">
+                <button id="submit-button" class="btn">Submit Button</button>
+                <button class="icon-btn" onclick="showSeleniumCode('submit-button')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <input type="button" id="input-button" value="Input Button" class="btn">
+                <button class="icon-btn" onclick="showSeleniumCode('input-button')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <input type="submit" id="input-submit" value="Input Submit" class="btn">
+                <button class="icon-btn" onclick="showSeleniumCode('input-submit')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <button id="reset-button" class="btn">Reset Button</button>
+                <button class="icon-btn" onclick="showSeleniumCode('reset-button')" title="View Selenium Code">📄</button>
+            </div>
+        </section>
+
+        <section id="checkboxes" class="section">
+            <h2>Checkboxes</h2>
+            <div class="element-container">
+                <input type="checkbox" id="checkbox1" name="checkboxGroup" value="option1">
+                <label for="checkbox1">Option 1</label>
+            </div>
+            <div class="element-container">
+                <input type="checkbox" id="checkbox2" name="checkboxGroup" value="option2">
+                <label for="checkbox2">Option 2</label>
+                <button class="icon-btn" onclick="showSeleniumCode('checkbox2')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <input type="checkbox" id="checkbox3" name="checkboxGroup" value="option3">
+                <label for="checkbox3">Option 3</label>
+                <button class="icon-btn" onclick="showSeleniumCode('checkbox3')" title="View Selenium Code">📄</button>
+            </div>
+            <button class="icon-btn" onclick="showSeleniumCode('checkbox1')" title="View Selenium Code">📄</button>
+        </section>
+
+        <section id="radio-buttons" class="section">
+            <h2>Radio Buttons</h2>
+            <div class="element-container">
+                <input type="radio" id="radio1" name="radioGroup" value="option1">
+                <label for="radio1">Option 1</label>
+            </div>
+            <div class="element-container">
+                <input type="radio" id="radio2" name="radioGroup" value="option2">
+                <label for="radio2">Option 2</label>
+                <button class="icon-btn" onclick="showSeleniumCode('radio2')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <input type="radio" id="radio3" name="radioGroup" value="option3">
+                <label for="radio3">Option 3</label>
+                <button class="icon-btn" onclick="showSeleniumCode('radio3')" title="View Selenium Code">📄</button>
+            </div>
+            <button class="icon-btn" onclick="showSeleniumCode('radio1')" title="View Selenium Code">📄</button>
+        </section>
+
+        <section id="select-dropdowns" class="section">
+            <h2>Select Dropdowns</h2>
+            <div class="element-container">
+                <label for="single-select">Single Select:</label>
+                <select id="single-select" name="singleSelect">
+                    <option value="">Choose an option</option>
+                    <option value="option1">Option 1</option>
+                    <option value="option2">Option 2</option>
+                    <option value="option3">Option 3</option>
+                </select>
+                <button class="icon-btn" onclick="showSeleniumCode('single-select')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <label for="multi-select">Multi Select (Hold Ctrl/Cmd to select multiple):</label>
+                <select id="multi-select" name="multiSelect" multiple size="4">
+                    <option value="option1">Option 1</option>
+                    <option value="option2">Option 2</option>
+                    <option value="option3">Option 3</option>
+                    <option value="option4">Option 4</option>
+                </select>
+                <button class="icon-btn" onclick="showSeleniumCode('multi-select')" title="View Selenium Code">📄</button>
+            </div>
+        </section>
+
+        <section id="textarea" class="section">
+            <h2>Textarea</h2>
+            <div class="element-container">
+                <label for="text-area">Textarea:</label>
+                <textarea id="text-area" name="textArea" rows="4" cols="50" placeholder="Enter your message here"></textarea>
+                <button class="icon-btn" onclick="showSeleniumCode('text-area')" title="View Selenium Code">📄</button>
+            </div>
+        </section>
+
+        <section id="links" class="section">
+            <h2>Links</h2>
+            <div class="element-container">
+                <a href="#" id="link1" class="link">Link 1</a>
+            </div>
+            <div class="element-container">
+                <a href="#" id="link2" class="link">Link 2</a>
+                <button class="icon-btn" onclick="showSeleniumCode('link2')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <a href="#" id="link3" class="link">Link 3</a>
+                <button class="icon-btn" onclick="showSeleniumCode('link3')" title="View Selenium Code">📄</button>
+            </div>
+            <button class="icon-btn" onclick="showSeleniumCode('link1')" title="View Selenium Code">📄</button>
+        </section>
+
+        <section id="images" class="section">
+            <h2>Images</h2>
+            <div class="element-container">
+                <img src="https://via.placeholder.com/150" alt="Placeholder Image 1" id="image1" class="image">
+            </div>
+            <div class="element-container">
+                <img src="https://via.placeholder.com/150" alt="Placeholder Image 2" id="image2" class="image">
+                <button class="icon-btn" onclick="showSeleniumCode('image2')" title="View Selenium Code">📄</button>
+            </div>
+            <button class="icon-btn" onclick="showSeleniumCode('image1')" title="View Selenium Code">📄</button>
+        </section>
+
+        <section id="tables" class="section">
+            <h2>Tables</h2>
+            <table id="sample-table" class="table">
+                <thead>
+                    <tr>
+                        <th>Header 1</th>
+                        <th>Header 2</th>
+                        <th>Header 3</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                    </tr>
+                    <tr>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td>Data 6</td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="icon-btn" onclick="showSeleniumCode('sample-table')" title="View Selenium Code">📄</button>
+        </section>
+
+        <section id="forms" class="section">
+            <h2>Forms</h2>
+            <form id="sample-form" class="form">
+                <div class="element-container">
+                    <label for="form-text">Form Text Input:</label>
+                    <input type="text" id="form-text" name="formText">
+                    <button class="icon-btn" onclick="showSeleniumCode('form-text')" title="View Selenium Code">📄</button>
+                </div>
+                <div class="element-container">
+                    <button type="submit" id="form-submit" class="btn">Submit Form</button>
+                    <button class="icon-btn" onclick="showSeleniumCode('form-submit')" title="View Selenium Code">📄</button>
+                </div>
+            </form>
+        </section>
+
+        <section id="javascript-popups" class="section">
+            <h2>JavaScript Popups</h2>
+            <div class="element-container">
+                <button id="alert-button" class="btn" onclick="showAlert()">Show Alert</button>
+                <button class="icon-btn" onclick="showSeleniumCode('alert-button')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <button id="confirm-button" class="btn" onclick="showConfirm()">Show Confirm</button>
+                <button class="icon-btn" onclick="showSeleniumCode('confirm-button')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <button id="prompt-button" class="btn" onclick="showPrompt()">Show Prompt</button>
+                <button class="icon-btn" onclick="showSeleniumCode('prompt-button')" title="View Selenium Code">📄</button>
+            </div>
+        </section>
+
+        <section id="advanced-interactions" class="section">
+            <h2>Advanced Interactions</h2>
+            <div class="element-container">
+                <p>Right-click on this div to see context menu:</p>
+                <div id="right-click-div" class="interaction-div" oncontextmenu="handleRightClick(event)">Right-click me!</div>
+                <button class="icon-btn" onclick="showSeleniumCode('right-click-div')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <p>Double-click on this div:</p>
+                <div id="double-click-div" class="interaction-div" ondblclick="handleDoubleClick()">Double-click me!</div>
+                <button class="icon-btn" onclick="showSeleniumCode('double-click-div')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <p>Hover over this div:</p>
+                <div id="hover-div" class="interaction-div" onmouseover="handleHover()" onmouseout="handleHoverOut()">Hover over me!</div>
+                <button class="icon-btn" onclick="showSeleniumCode('hover-div')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <p>Drag and Drop:</p>
+                <div id="drag-source" class="drag-item" draggable="true" ondragstart="handleDragStart(event)">Drag me!</div>
+                <button class="icon-btn" onclick="showSeleniumCode('drag-source')" title="View Selenium Code">📄</button>
+                <div id="drop-target" class="drop-target" ondrop="handleDrop(event)" ondragover="allowDrop(event)">Drop here!</div>
+                <button class="icon-btn" onclick="showSeleniumCode('drop-target')" title="View Selenium Code">📄</button>
+            </div>
+        </section>
+
+        <section id="advanced-elements" class="section">
+            <h2>Advanced Elements</h2>
+            <div class="element-container">
+                <h3>Iframe</h3>
+                <iframe id="sample-iframe" src="data:text/html,<h1>Inside Iframe</h1><p id='iframe-text'>This is content inside an iframe.</p><button id='iframe-button'>Button in iframe</button>" width="100%" height="150"></iframe>
+                <button class="icon-btn" onclick="showSeleniumCode('sample-iframe')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <h3>Progress Bar</h3>
+                <progress id="progress-bar" value="65" max="100"></progress>
+                <button id="update-progress" class="btn" onclick="updateProgress()">Update Progress</button>
+                <button class="icon-btn" onclick="showSeleniumCode('progress-bar')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <h3>Meter</h3>
+                <meter id="meter-element" value="0.8" min="0" max="1" low="0.3" high="0.7" optimum="0.9"></meter>
+                <button class="icon-btn" onclick="showSeleniumCode('meter-element')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <h3>Details/Summary (Collapsible)</h3>
+                <details id="details-element">
+                    <summary id="summary-element">Click to expand</summary>
+                    <p>This is hidden content that can be toggled.</p>
+                </details>
+                <button class="icon-btn" onclick="showSeleniumCode('details-element')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <h3>Dialog/Modal</h3>
+                <button id="open-dialog" class="btn" onclick="openDialog()">Open Dialog</button>
+                <dialog id="sample-dialog">
+                    <h3>Modal Dialog</h3>
+                    <p>This is a native HTML dialog element.</p>
+                    <button id="close-dialog" onclick="closeDialog()">Close</button>
+                </dialog>
+                <button class="icon-btn" onclick="showSeleniumCode('open-dialog')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <h3>SVG Element</h3>
+                <svg id="sample-svg" width="200" height="100">
+                    <circle id="svg-circle" cx="50" cy="50" r="40" fill="#007bff" onclick="handleSvgClick()"></circle>
+                    <rect id="svg-rect" x="120" y="10" width="60" height="80" fill="#28a745"></rect>
+                </svg>
+                <button class="icon-btn" onclick="showSeleniumCode('sample-svg')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <h3>Canvas</h3>
+                <canvas id="sample-canvas" width="200" height="100" style="border:1px solid #000;"></canvas>
+                <button id="draw-canvas" class="btn" onclick="drawOnCanvas()">Draw on Canvas</button>
+                <button class="icon-btn" onclick="showSeleniumCode('sample-canvas')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <h3>Elements with Data Attributes</h3>
+                <div id="data-div" data-test-id="sample-data" data-value="123">
+                    <span id="data-span" data-role="label" data-type="text">Element with data attributes</span>
+                </div>
+                <button class="icon-btn" onclick="showSeleniumCode('data-div')" title="View Selenium Code">📄</button>
+            </div>
+            <div class="element-container">
+                <h3>Keyboard Events</h3>
+                <input type="text" id="key-input" placeholder="Type here and press Enter" onkeydown="handleKeyDown(event)">
+                <button class="icon-btn" onclick="showSeleniumCode('key-input')" title="View Selenium Code">📄</button>
+                <p id="key-output">Key events will appear here</p>
+            </div>
+        </section>
+
+        <section id="divs-spans" class="section">
+            <h2>Divs and Spans</h2>
+            <div id="sample-div" class="sample-div">
+                <span id="sample-span" class="sample-span">This is a span inside a div.</span>
+                <button class="icon-btn" onclick="showSeleniumCode('sample-span')" title="View Selenium Code">📄</button>
+            </div>
+            <button class="icon-btn" onclick="showSeleniumCode('sample-div')" title="View Selenium Code">📄</button>
+        </section>
+
+        <section id="full-automation" class="section">
+            <h2>Full Automation Code Example</h2>
+            <p>Complete end-to-end test demonstrating all element interactions:</p>
+            <button class="btn" onclick="showFullAutomationCode()">📋 View Full Automation Code</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Selenium Practice Website</p>
+    </footer>
+
+    <script>
+        function showAlert() {
+            alert('This is a JavaScript alert popup!');
+        }
+
+        function showConfirm() {
+            const result = confirm('Are you sure you want to proceed?');
+            alert('You clicked: ' + (result ? 'OK' : 'Cancel'));
+        }
+
+        function showPrompt() {
+            const result = prompt('Please enter your name:', 'John Doe');
+            if (result !== null) {
+                alert('Hello, ' + result + '!');
+            } else {
+                alert('You cancelled the prompt.');
+            }
+        }
+
+        function handleRightClick(event) {
+            event.preventDefault();
+            alert('Right-click detected! Context menu would appear here.');
+        }
+
+        function handleDoubleClick() {
+            alert('Double-click detected!');
+        }
+
+        function handleHover() {
+            const div = document.getElementById('hover-div');
+            div.style.backgroundColor = '#ffeb3b';
+            div.textContent = 'Hovered!';
+        }
+
+        function handleHoverOut() {
+            const div = document.getElementById('hover-div');
+            div.style.backgroundColor = '';
+            div.textContent = 'Hover over me!';
+        }
+
+        function handleDragStart(event) {
+            event.dataTransfer.setData('text/plain', event.target.id);
+        }
+
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function handleDrop(event) {
+            event.preventDefault();
+            const data = event.dataTransfer.getData('text/plain');
+            const draggedElement = document.getElementById(data);
+            event.target.appendChild(draggedElement);
+            alert('Element dropped successfully!');
+        }
+
+        function updateProgress() {
+            const progress = document.getElementById('progress-bar');
+            progress.value = Math.min(progress.value + 10, 100);
+        }
+
+        function openDialog() {
+            document.getElementById('sample-dialog').showModal();
+        }
+
+        function closeDialog() {
+            document.getElementById('sample-dialog').close();
+        }
+
+        function handleSvgClick() {
+            alert('SVG circle clicked!');
+        }
+
+        function drawOnCanvas() {
+            const canvas = document.getElementById('sample-canvas');
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = '#007bff';
+            ctx.fillRect(10, 10, 50, 50);
+            ctx.fillStyle = '#28a745';
+            ctx.beginPath();
+            ctx.arc(150, 50, 30, 0, 2 * Math.PI);
+            ctx.fill();
+        }
+
+        function handleKeyDown(event) {
+            const output = document.getElementById('key-output');
+            if (event.key === 'Enter') {
+                output.textContent = 'Enter key pressed!';
+            } else {
+                output.textContent = `Key pressed: ${event.key} (code: ${event.code})`;
+            }
+        }
+
+        function showSeleniumCode(elementId) {
+            const { code, explanation } = generateSeleniumCode(elementId);
+            document.getElementById('modalTitle').textContent = `Selenium Code - ${elementId}`;
+            document.getElementById('modalExplanation').textContent = explanation;
+            document.getElementById('modalCode').innerHTML = code;
+            document.getElementById('codeModal').style.display = 'block';
+        }
+
+        function closeCodeModal() {
+            document.getElementById('codeModal').style.display = 'none';
+        }
+
+        function copyToClipboard() {
+            const codeElement = document.getElementById('modalCode');
+            const text = codeElement.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.querySelector('.btn-copy');
+                const originalText = btn.textContent;
+                btn.textContent = '✓ Copied!';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                }, 2000);
+            });
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('codeModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        function generateSeleniumCode(elementId) {
+            const element = document.getElementById(elementId);
+            const tagName = element.tagName.toLowerCase();
+            const elementType = element.type || '';
+            const name = element.name || '';
+            const code = [];
+            let explanation = '';
+
+            // Add common imports for most scenarios
+            code.push('from selenium import webdriver');
+            code.push('from selenium.webdriver.common.by import By');
+            code.push('from selenium.webdriver.support.ui import WebDriverWait');
+            code.push('from selenium.webdriver.support import expected_conditions as EC');
+            code.push('from selenium.webdriver.support.ui import Select');
+            code.push('from selenium.webdriver.common.action_chains import ActionChains');
+            code.push('from selenium.webdriver.common.keys import Keys');
+            code.push('');
+            code.push('# Initialize driver');
+            code.push('driver = webdriver.Chrome()');
+            code.push('driver.get("http://localhost:8000")');
+            code.push('');
+            code.push('# Find by ID');
+            code.push(`element = driver.find_element(By.ID, "${elementId}")`);
+
+            if (name) {
+                code.push('');
+                code.push('# Find by name');
+                code.push(`element_by_name = driver.find_element(By.NAME, "${name}")`);
+            }
+
+            code.push('');
+            code.push('# Find by CSS selector');
+            code.push(`element_by_css = driver.find_element(By.CSS_SELECTOR, "${tagName}#${elementId}")`);
+
+            code.push('');
+            code.push('# Find by XPath');
+            code.push(`element_by_xpath = driver.find_element(By.XPATH, "//${tagName}[@id='${elementId}']")`);
+
+            // Element-specific actions
+            if (tagName === 'input') {
+                if (elementType === 'text' || elementType === 'password' || elementType === 'email' || elementType === 'search' || elementType === 'url' || elementType === 'tel') {
+                    code.push('');
+                    code.push('// Send keys (type text)');
+                    code.push('element.sendKeys("sample text");');
+                    explanation = `This ${elementType} input field allows text entry. Use sendKeys() to type text into the field. Clear it first with clear() if needed.`;
+                } else if (elementType === 'checkbox' || elementType === 'radio') {
+                    code.push('');
+                    code.push('// Click to select');
+                    code.push('element.click();');
+                    code.push('');
+                    code.push('// Check if selected');
+                    code.push('boolean isSelected = element.isSelected();');
+                    explanation = `This is a ${elementType} input. Use click() to toggle it and isSelected() to verify its state.`;
+                } else if (elementType === 'file') {
+                    code.push('');
+                    code.push('// Upload file');
+                    code.push('element.sendKeys("C:\\\\path\\\\to\\\\file.txt");');
+                    explanation = 'File input fields use sendKeys() with the file path to upload files. Provide the absolute path to the file.';
+                } else if (elementType === 'button' || elementType === 'submit') {
+                    code.push('');
+                    code.push('// Click button');
+                    code.push('element.click();');
+                    explanation = 'This button element can be clicked with the click() method to perform an action.';
+                } else if (elementType === 'date' || elementType === 'time' || elementType === 'datetime-local' || elementType === 'month' || elementType === 'week') {
+                    code.push('');
+                    code.push(`// Set ${elementType}`);
+                    code.push('element.sendKeys("12312020");  // Format varies by type');
+                    explanation = `This is a ${elementType} picker input. Different browsers handle these differently - some support sendKeys, others require JavaScript interaction.`;
+                } else if (elementType === 'color') {
+                    code.push('');
+                    code.push('// Get color value');
+                    code.push('String colorValue = element.getAttribute("value");');
+                    code.push('');
+                    code.push('// Set color value');
+                    code.push('JavascriptExecutor js = (JavascriptExecutor) driver;');
+                    code.push('js.executeScript("arguments[0].value = \'#007bff\'", element);');
+                    explanation = 'Color input fields store hex color values. Use getAttribute("value") to get the selected color. JavaScript may be needed to set colors in some browsers.';
+                } else if (elementType === 'range') {
+                    code.push('');
+                    code.push('// Get range value');
+                    code.push('String rangeValue = element.getAttribute("value");');
+                    code.push('');
+                    code.push('// Set range value');
+                    code.push('JavascriptExecutor js = (JavascriptExecutor) driver;');
+                    code.push('js.executeScript("arguments[0].value = 75; arguments[0].dispatchEvent(new Event(\'input\'))", element);');
+                    explanation = 'Range sliders require JavaScript to set values since they cannot be interacted with directly. Get the current value with getAttribute("value").';
+                } else if (elementType === 'hidden') {
+                    code.push('');
+                    code.push('// Get hidden input value');
+                    code.push('String hiddenValue = element.getAttribute("value");');
+                    explanation = 'Hidden inputs are not visible on the page but can be accessed via WebDriver. Use getAttribute("value") to retrieve their value.';
+                } else {
+                    code.push('');
+                    code.push('// Generic input element');
+                    code.push('String value = element.getAttribute("value");');
+                    explanation = 'This is a generic input element. Use getAttribute("value") to get the current value and sendKeys() to enter text.';
+                }
+            } else if (tagName === 'button') {
+                code.push('');
+                code.push('// Click button');
+                code.push('element.click();');
+                explanation = 'This is a button element. Use click() to activate it.';
+            } else if (tagName === 'select') {
+                code.push('');
+                code.push('// Select by visible text');
+                code.push('Select select = new Select(element);');
+                code.push('select.selectByVisibleText("Option 1");');
+                code.push('');
+                code.push('// Select by value');
+                code.push('select.selectByValue("option1");');
+                code.push('');
+                code.push('// Select by index');
+                code.push('select.selectByIndex(0);');
+                code.push('');
+                code.push('// Get all selected options');
+                code.push('List<WebElement> selectedOptions = select.getAllSelectedOptions();');
+                code.push('import org.openqa.selenium.support.ui.Select;');
+                explanation = 'Select elements require the Select class. Use selectByVisibleText(), selectByValue(), or selectByIndex(). For multi-select, use getAllSelectedOptions().';
+            } else if (tagName === 'textarea') {
+                code.push('');
+                code.push('// Send keys (type text)');
+                code.push('element.sendKeys("Sample text content");');
+                code.push('');
+                code.push('// Clear and type new text');
+                code.push('element.clear();');
+                code.push('element.sendKeys("New content");');
+                code.push('');
+                code.push('// Get current text');
+                code.push('String currentText = element.getAttribute("value");');
+                explanation = 'Textarea is multi-line text input. Use sendKeys() to type, clear() to empty, and getAttribute("value") to get current content.';
+            } else if (tagName === 'a') {
+                code.push('');
+                code.push('// Click link');
+                code.push('element.click();');
+                code.push('');
+                code.push('// Get link text');
+                code.push('String linkText = element.getText();');
+                code.push('');
+                code.push('// Get href attribute');
+                code.push('String href = element.getAttribute("href");');
+                code.push('');
+                code.push('// Get target attribute');
+                code.push('String target = element.getAttribute("target");');
+                explanation = 'Links can be clicked to navigate. Use getText() for link text, getAttribute("href") for URL, and getAttribute("target") for target behavior.';
+            } else if (tagName === 'img') {
+                code.push('');
+                code.push('// Get image source');
+                code.push('String src = element.getAttribute("src");');
+                code.push('');
+                code.push('// Get alt text');
+                code.push('String alt = element.getAttribute("alt");');
+                code.push('');
+                code.push('// Check if image is displayed');
+                code.push('boolean isDisplayed = element.isDisplayed();');
+                code.push('');
+                code.push('// Get image dimensions');
+                code.push('int width = element.getSize().getWidth();');
+                code.push('int height = element.getSize().getHeight();');
+                explanation = 'Images are not directly clickable. Access src and alt attributes, use getSize() to verify dimensions, and isDisplayed() to check visibility.';
+            } else if (tagName === 'iframe') {
+                code.push('');
+                code.push('// Switch to iframe');
+                code.push('driver.switchTo().frame(element);');
+                code.push('');
+                code.push('// Find element inside iframe');
+                code.push('WebElement iframeElement = driver.findElement(By.id("iframe-text"));');
+                code.push('String iframeText = iframeElement.getText();');
+                code.push('');
+                code.push('// Switch back to main content');
+                code.push('driver.switchTo().defaultContent();');
+                explanation = 'Iframes create separate contexts. Use switchTo().frame() to interact with iframe contents, then switchTo().defaultContent() to return.';
+            } else if (tagName === 'progress') {
+                code.push('');
+                code.push('// Get progress value');
+                code.push('String value = element.getAttribute("value");');
+                code.push('String max = element.getAttribute("max");');
+                code.push('');
+                code.push('// Calculate percentage');
+                code.push('double percentage = (Double.parseDouble(value) / Double.parseDouble(max)) * 100;');
+                explanation = 'Progress bars show completion. Get value and max attributes, then calculate percentage to verify progress state.';
+            } else if (tagName === 'meter') {
+                code.push('');
+                code.push('// Get meter value');
+                code.push('String value = element.getAttribute("value");');
+                code.push('String min = element.getAttribute("min");');
+                code.push('String max = element.getAttribute("max");');
+                code.push('String low = element.getAttribute("low");');
+                code.push('String high = element.getAttribute("high");');
+                explanation = 'Meter elements display measurements. Check value, min, max, low, and high attributes to verify measurement state.';
+            } else if (tagName === 'details') {
+                code.push('');
+                code.push('// Click to expand/collapse');
+                code.push('element.click();');
+                code.push('');
+                code.push('// Check if open');
+                code.push('boolean isOpen = element.getAttribute("open") != null;');
+                code.push('');
+                code.push('// Get summary and content');
+                code.push('WebElement summary = element.findElement(By.tagName("summary"));');
+                code.push('String summaryText = summary.getText();');
+                explanation = 'Details elements are collapsible sections. Click to toggle, check "open" attribute, and use findElement() to access summary and content.';
+            } else if (tagName === 'svg') {
+                code.push('');
+                code.push('// Find SVG elements');
+                code.push('WebElement circle = driver.findElement(By.id("svg-circle"));');
+                code.push('');
+                code.push('// Get SVG attributes');
+                code.push('String fillColor = circle.getAttribute("fill");');
+                code.push('String cx = circle.getAttribute("cx");');
+                code.push('String cy = circle.getAttribute("cy");');
+                code.push('');
+                code.push('// Click SVG element');
+                code.push('circle.click();');
+                explanation = 'SVG elements can be clicked by finding child elements. Locate by ID/CSS and interact like regular elements, access SVG-specific attributes.';
+            } else if (tagName === 'canvas') {
+                code.push('');
+                code.push('// Canvas requires JavaScript for content interaction');
+                code.push('JavascriptExecutor js = (JavascriptExecutor) driver;');
+                code.push('');
+                code.push('// Execute JavaScript to draw');
+                code.push('js.executeScript("drawOnCanvas()");');
+                code.push('');
+                code.push('// Get canvas as image (base64)');
+                code.push('String canvasBase64 = (String) js.executeScript(');
+                code.push('    "return document.querySelector(\'canvas\').toDataURL()"');
+                code.push(');');
+                explanation = 'Canvas elements require JavascriptExecutor for testing. Use it to interact with canvas or capture canvas content as image data.';
+            } else if (tagName === 'table') {
+                code.push('');
+                code.push('// Get all rows');
+                code.push('List<WebElement> rows = element.findElements(By.tagName("tr"));');
+                code.push('');
+                code.push('// Get specific cell');
+                code.push('WebElement cell = element.findElement(By.xpath(".//tr[1]/td[1]"));');
+                code.push('String cellText = cell.getText();');
+                code.push('');
+                code.push('// Iterate through table data');
+                code.push('for (WebElement row : rows) {');
+                code.push('    List<WebElement> cells = row.findElements(By.tagName("td"));');
+                code.push('    for (WebElement cellData : cells) {');
+                code.push('        System.out.println(cellData.getText());');
+                code.push('    }');
+                code.push('}');
+                explanation = 'For tables, use findElements() to locate rows and cells. Navigate structure with tr and td tags. Iterate through rows to extract data.';
+            } else if (tagName === 'form') {
+                code.push('');
+                code.push('// Get form ID');
+                code.push('String formId = element.getAttribute("id");');
+                code.push('');
+                code.push('// Find elements within form');
+                code.push('WebElement input = element.findElement(By.id("form-text"));');
+                code.push('WebElement submitBtn = element.findElement(By.id("form-submit"));');
+                code.push('');
+                code.push('// Fill form and submit');
+                code.push('input.sendKeys("form data");');
+                code.push('submitBtn.click();');
+                explanation = 'Forms contain multiple inputs. Find elements within using relative XPath or nested findElements(). Fill inputs and click submit to submit.';
+            } else if (tagName === 'dialog') {
+                code.push('');
+                code.push('// Check if dialog is displayed');
+                code.push('boolean isDisplayed = element.isDisplayed();');
+                code.push('');
+                code.push('// Get dialog text');
+                code.push('String dialogText = element.getText();');
+                code.push('');
+                code.push('// Find and click button in dialog');
+                code.push('WebElement closeBtn = element.findElement(By.id("close-dialog"));');
+                code.push('closeBtn.click();');
+                explanation = 'Dialog elements are modal windows. Check if displayed, get content with getText(), interact with buttons inside to close.';
+            } else if (elementId === 'data-div') {
+                code.push('');
+                code.push('// Find by data attribute');
+                code.push(`WebElement dataElement = driver.findElement(By.cssSelector("[data-test-id='sample-data']"));`);
+                code.push('String dataValue = dataElement.getAttribute("data-value");');
+                code.push('');
+                code.push('// Find by any data attribute');
+                code.push(`WebElement element = driver.findElement(By.cssSelector("[data-role='label']"));`);
+                explanation = 'Elements with custom data attributes use CSS selectors with attribute selectors. Access values with getAttribute().';
+            } else if (elementId === 'key-input') {
+                code.push('');
+                code.push('// Send keyboard keys');
+                code.push('element.sendKeys("test input");');
+                code.push('element.sendKeys(Keys.ENTER);');
+                code.push('');
+                code.push('// Or use Actions for keyboard');
+                code.push('import org.openqa.selenium.Keys;');
+                code.push('import org.openqa.selenium.interactions.Actions;');
+                code.push('');
+                code.push('Actions actions = new Actions(driver);');
+                code.push('actions.keyDown(Keys.SHIFT).sendKeys("a").keyUp(Keys.SHIFT).perform();');
+                explanation = 'For keyboard inputs, use sendKeys() for simple text or Keys enum for special keys. For complex keyboard combinations, use Actions class with keyDown() and keyUp().';
+            } else if (elementId === 'right-click-div') {
+                code.push('');
+                code.push('# Import Actions class');
+                code.push('from selenium.webdriver.common.action_chains import ActionChains');
+                code.push('');
+                code.push('# Perform right-click (context menu)');
+                code.push('actions = ActionChains(driver)');
+                code.push('actions.context_click(element).perform()');
+                code.push('');
+                code.push('# Handle alert if needed');
+                code.push('import time');
+                code.push('time.sleep(0.5)');
+                code.push('alert = driver.switch_to.alert');
+                code.push('alert.accept()');
+                explanation = 'For right-click interactions, use ActionChains with context_click() method. This triggers a context menu or right-click event handler.';
+            } else if (elementId === 'double-click-div') {
+                code.push('');
+                code.push('# Import Actions class');
+                code.push('from selenium.webdriver.common.action_chains import ActionChains');
+                code.push('');
+                code.push('# Perform double-click');
+                code.push('actions = ActionChains(driver)');
+                code.push('actions.double_click(element).perform()');
+                explanation = 'For double-click interactions, use ActionChains with double_click() method to trigger double-click event handlers.';
+            } else if (elementId === 'hover-div') {
+                code.push('');
+                code.push('# Import Actions class');
+                code.push('from selenium.webdriver.common.action_chains import ActionChains');
+                code.push('');
+                code.push('# Perform hover (mouse over)');
+                code.push('actions = ActionChains(driver)');
+                code.push('actions.move_to_element(element).perform()');
+                code.push('');
+                code.push('# Verify element changed state');
+                code.push('bg_color = element.value_of_css_property("background-color")');
+                code.push('print(f"Background color: {bg_color}")');
+                explanation = 'For hover interactions, use ActionChains with move_to_element() to trigger mouseover event handlers. Monitor CSS property changes to verify hover effects.';
+            } else if (elementId === 'drag-source') {
+                code.push('');
+                code.push('# Import Actions class');
+                code.push('from selenium.webdriver.common.action_chains import ActionChains');
+                code.push('');
+                code.push('# Find both drag source and drop target');
+                code.push('drag_source = driver.find_element(By.ID, "drag-source")');
+                code.push('drop_target = driver.find_element(By.ID, "drop-target")');
+                code.push('');
+                code.push('# Perform drag and drop');
+                code.push('actions = ActionChains(driver)');
+                code.push('actions.drag_and_drop(drag_source, drop_target).perform()');
+                explanation = 'For drag operations, use ActionChains with drag_and_drop() method. Specify both the source element to drag and the target element to drop onto.';
+            } else if (elementId === 'drop-target') {
+                code.push('');
+                code.push('# Import Actions class');
+                code.push('from selenium.webdriver.common.action_chains import ActionChains');
+                code.push('');
+                code.push('# Find both drag source and drop target');
+                code.push('drag_source = driver.find_element(By.ID, "drag-source")');
+                code.push('drop_target = driver.find_element(By.ID, "drop-target")');
+                code.push('');
+                code.push('# Perform drag and drop');
+                code.push('actions = ActionChains(driver)');
+                code.push('actions.drag_and_drop(drag_source, drop_target).perform()');
+                explanation = 'Drop targets receive dragged elements. Use drag_and_drop() to move an element from source to this target. The drop operation is part of the drag action.';
+            } else if (elementId === 'key-input') {
+                code.push('');
+                code.push('# Send keyboard keys');
+                code.push('element.send_keys("test input")');
+                code.push('element.send_keys(Keys.ENTER)');
+                code.push('');
+                code.push('# Or use ActionChains for keyboard');
+                code.push('from selenium.webdriver.common.action_chains import ActionChains');
+                code.push('');
+                code.push('actions = ActionChains(driver)');
+                code.push('actions.key_down(Keys.SHIFT).send_keys("a").key_up(Keys.SHIFT).perform()');
+                explanation = 'For keyboard inputs, use send_keys() for simple text or Keys enum for special keys. For complex keyboard combinations, use ActionChains with key_down() and key_up().';
+            } else if (tagName === 'div' || tagName === 'span' || tagName === 'p' || tagName === 'h1' || tagName === 'h2' || tagName === 'h3' || tagName === 'h4' || tagName === 'h5' || tagName === 'h6') {
+                code.push('');
+                code.push('# Get element text');
+                code.push('text = element.text');
+                code.push('');
+                code.push('# Wait for element visibility');
+                code.push('wait = WebDriverWait(driver, 10)');
+                code.push('wait.until(EC.visibility_of(element))');
+                code.push('');
+                code.push('# Check if element is displayed');
+                code.push('is_displayed = element.is_displayed()');
+                explanation = `This is a ${tagName} element. Use text property to get its content, wait for visibility with WebDriverWait, and is_displayed() to verify it's visible.`;
+            } else {
+                code.push('');
+                code.push('# Generic element handling');
+                code.push('text = element.text');
+                code.push('is_displayed = element.is_displayed()');
+                code.push('');
+                code.push('# For interactions, consider using ActionChains');
+                code.push('from selenium.webdriver.common.action_chains import ActionChains');
+                code.push('actions = ActionChains(driver)');
+                explanation = 'This is a generic HTML element. Use text property to get content and is_displayed() to verify visibility. For interactions, use ActionChains.';
+            }
+
+            const codeHtml = '<pre><code>' + code.join('\n') + '</code></pre>';
+            return { code: codeHtml, explanation };
+        }
+
+        function showFullAutomationCode() {
+            const code = [];
+            
+            code.push('from selenium import webdriver');
+            code.push('from selenium.webdriver.common.by import By');
+            code.push('from selenium.webdriver.support.ui import WebDriverWait');
+            code.push('from selenium.webdriver.support import expected_conditions as EC');
+            code.push('from selenium.webdriver.support.ui import Select');
+            code.push('from selenium.webdriver.common.action_chains import ActionChains');
+            code.push('from selenium.webdriver.common.keys import Keys');
+            code.push('import time');
+            code.push('');
+            code.push('class SeleniumPracticeTest:');
+            code.push('    def __init__(self):');
+            code.push('        self.driver = None');
+            code.push('        self.wait = None');
+            code.push('');
+            code.push('    def setUp(self):');
+            code.push('        """Initialize WebDriver and navigate to practice site"""');
+            code.push('        self.driver = webdriver.Chrome()');
+            code.push('        self.wait = WebDriverWait(self.driver, 10)');
+            code.push('        self.driver.get("http://localhost:8000")');
+            code.push('        print("Browser launched successfully!")');
+            code.push('');
+            code.push('    def test_input_fields(self):');
+            code.push('        """Test various input field types"""');
+            code.push('        print("\\n=== Testing Input Fields ===")');
+            code.push('');
+            code.push('        # Test text input');
+            code.push('        text_input = self.wait.until(');
+            code.push('            EC.visibility_of_element_located((By.ID, "text-input"))');
+            code.push('        )');
+            code.push('        text_input.send_keys("Selenium Test")');
+            code.push('        text_value = text_input.get_attribute("value")');
+            code.push('        print(f"Text Input Value: {text_value}")');
+            code.push('');
+            code.push('        # Test email input');
+            code.push('        email_input = self.driver.find_element(By.ID, "email-input")');
+            code.push('        email_input.send_keys("test@example.com")');
+            code.push('        email_value = email_input.get_attribute("value")');
+            code.push('        print(f"Email Input Value: {email_value}")');
+            code.push('');
+            code.push('        # Test number input');
+            code.push('        number_input = self.driver.find_element(By.ID, "number-input")');
+            code.push('        number_input.clear()');
+            code.push('        number_input.send_keys("42")');
+            code.push('        number_value = number_input.get_attribute("value")');
+            code.push('        print(f"Number Input Value: {number_value}")');
+            code.push('');
+            code.push('        # Test date input');
+            code.push('        date_input = self.driver.find_element(By.ID, "date-input")');
+            code.push('        date_input.send_keys("01012025")');
+            code.push('        print(f"Date Input Value: {date_input.get_attribute(\'value\')}")');
+            code.push('');
+            code.push('    def test_buttons(self):');
+            code.push('        """Test button interactions"""');
+            code.push('        print("\\n=== Testing Buttons ===")');
+            code.push('');
+            code.push('        # Test submit button');
+            code.push('        submit_btn = self.driver.find_element(By.ID, "submit-button")');
+            code.push('        is_enabled = submit_btn.is_enabled()');
+            code.push('        print(f"Submit Button Enabled: {is_enabled}")');
+            code.push('');
+            code.push('        button_text = submit_btn.text');
+            code.push('        print(f"Button Text: {button_text}")');
+            code.push('');
+            code.push('        # Get button color');
+            code.push('        bg_color = submit_btn.value_of_css_property("background-color")');
+            code.push('        print(f"Button Background Color: {bg_color}")');
+            code.push('');
+            code.push('    def test_checkboxes_and_radios(self):');
+            code.push('        """Test checkbox and radio button interactions"""');
+            code.push('        print("\\n=== Testing Checkboxes and Radio Buttons ===")');
+            code.push('');
+            code.push('        # Test checkboxes');
+            code.push('        checkbox1 = self.driver.find_element(By.ID, "checkbox1")');
+            code.push('        if not checkbox1.is_selected():');
+            code.push('            checkbox1.click()');
+            code.push('        print(f"Checkbox1 Selected: {checkbox1.is_selected()}")');
+            code.push('');
+            code.push('        checkbox2 = self.driver.find_element(By.ID, "checkbox2")');
+            code.push('        checkbox2.click()');
+            code.push('        print(f"Checkbox2 Selected: {checkbox2.is_selected()}")');
+            code.push('');
+            code.push('        # Test radio buttons');
+            code.push('        radio1 = self.driver.find_element(By.ID, "radio1")');
+            code.push('        radio1.click()');
+            code.push('        print(f"Radio1 Selected: {radio1.is_selected()}")');
+            code.push('');
+            code.push('        radio2 = self.driver.find_element(By.ID, "radio2")');
+            code.push('        radio2.click()');
+            code.push('        print(f"Radio2 Selected (should be true): {radio2.is_selected()}")');
+            code.push('        print(f"Radio1 Selected (should be false): {radio1.is_selected()}")');
+            code.push('');
+            code.push('    def test_select_dropdowns(self):');
+            code.push('        """Test select dropdown interactions"""');
+            code.push('        print("\\n=== Testing Select Dropdowns ===")');
+            code.push('');
+            code.push('        # Test single select');
+            code.push('        single_select = self.driver.find_element(By.ID, "single-select")');
+            code.push('        select_obj = Select(single_select)');
+            code.push('        select_obj.select_by_visible_text("Option 2")');
+            code.push('        selected_text = select_obj.first_selected_option.text');
+            code.push('        print(f"Selected Option: {selected_text}")');
+            code.push('');
+            code.push('        # Test multi-select');
+            code.push('        multi_select = self.driver.find_element(By.ID, "multi-select")');
+            code.push('        multi_select_obj = Select(multi_select)');
+            code.push('        multi_select_obj.select_by_visible_text("Option 1")');
+            code.push('        multi_select_obj.select_by_visible_text("Option 3")');
+            code.push('        selected_count = len(multi_select_obj.all_selected_options)');
+            code.push('        print(f"Multi-select Count: {selected_count}")');
+            code.push('');
+            code.push('    def test_advanced_interactions(self):');
+            code.push('        """Test advanced interactions like drag-drop, hover, right-click"""');
+            code.push('        print("\\n=== Testing Advanced Interactions ===")');
+            code.push('');
+            code.push('        # Test right-click');
+            code.push('        right_click_div = self.driver.find_element(By.ID, "right-click-div")');
+            code.push('        actions = ActionChains(self.driver)');
+            code.push('        actions.context_click(right_click_div).perform()');
+            code.push('        print("Right-click performed")');
+            code.push('        time.sleep(0.5)');
+            code.push('        self.driver.switch_to.alert.accept()');
+            code.push('        print("Alert accepted")');
+            code.push('');
+            code.push('        # Test double-click');
+            code.push('        double_click_div = self.driver.find_element(By.ID, "double-click-div")');
+            code.push('        actions.double_click(double_click_div).perform()');
+            code.push('        print("Double-click performed")');
+            code.push('        time.sleep(0.5)');
+            code.push('        self.driver.switch_to.alert.accept()');
+            code.push('        print("Alert accepted")');
+            code.push('');
+            code.push('        # Test hover');
+            code.push('        hover_div = self.driver.find_element(By.ID, "hover-div")');
+            code.push('        actions.move_to_element(hover_div).perform()');
+            code.push('        time.sleep(0.5)');
+            code.push('        hover_text = hover_div.text');
+            code.push('        print(f"Hover text: {hover_text}")');
+            code.push('');
+            code.push('        # Test drag and drop');
+            code.push('        drag_source = self.driver.find_element(By.ID, "drag-source")');
+            code.push('        drop_target = self.driver.find_element(By.ID, "drop-target")');
+            code.push('        actions.drag_and_drop(drag_source, drop_target).perform()');
+            code.push('        print("Drag and drop performed")');
+            code.push('        time.sleep(0.5)');
+            code.push('        self.driver.switch_to.alert.accept()');
+            code.push('');
+            code.push('    def test_forms(self):');
+            code.push('        """Test form elements and table parsing"""');
+            code.push('        print("\\n=== Testing Forms ===")');
+            code.push('');
+            code.push('        # Find form elements');
+            code.push('        form_text = self.driver.find_element(By.ID, "form-text")');
+            code.push('        form_text.send_keys("Form Test Data")');
+            code.push('        print(f"Form text filled: {form_text.get_attribute(\'value\')}")');
+            code.push('');
+            code.push('        # Test table');
+            code.push('        table = self.driver.find_element(By.ID, "sample-table")');
+            code.push('        rows = table.find_elements(By.TAG_NAME, "tr")');
+            code.push('        print(f"Table rows count: {len(rows)}")');
+            code.push('');
+            code.push('        # Get first row cells');
+            code.push('        cells = rows[0].find_elements(By.TAG_NAME, "th")');
+            code.push('        print(f"First row cell count: {len(cells)}")');
+            code.push('');
+            code.push('        # Test textarea');
+            code.push('        textarea = self.driver.find_element(By.ID, "text-area")');
+            code.push('        textarea.send_keys("This is a test message for textarea")');
+            code.push('        print(f"Textarea value: {textarea.get_attribute(\'value\')}")');
+            code.push('');
+            code.push('    def tearDown(self):');
+            code.push('        """Close the browser and cleanup"""');
+            code.push('        print("\\n=== Test Completed ===")');
+            code.push('        self.driver.quit()');
+            code.push('        print("Browser closed successfully!")');
+            code.push('');
+            code.push('# Main execution');
+            code.push('if __name__ == "__main__":');
+            code.push('    test = SeleniumPracticeTest()');
+            code.push('    try:');
+            code.push('        test.setUp()');
+            code.push('        test.test_input_fields()');
+            code.push('        test.test_buttons()');
+            code.push('        test.test_checkboxes_and_radios()');
+            code.push('        test.test_select_dropdowns()');
+            code.push('        test.test_advanced_interactions()');
+            code.push('        test.test_forms()');
+            code.push('    finally:');
+            code.push('        test.tearDown()');
+            
+            const automationCode = '<pre><code>' + code.join('\n') + '</code></pre>';
+            
+            document.getElementById('modalTitle').textContent = 'Full Automation Code - Complete Test';
+            document.getElementById('modalExplanation').textContent = 'This is a complete end-to-end Selenium test that demonstrates how to interact with all types of elements on the practice website. It includes: Input fields, Buttons, Checkboxes, Radio buttons, Dropdowns, Advanced interactions (right-click, double-click, hover, drag-drop), Forms, and Tables.';
+            document.getElementById('modalCode').innerHTML = automationCode;
+            document.getElementById('codeModal').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
