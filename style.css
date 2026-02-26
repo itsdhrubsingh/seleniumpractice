@@ -163,11 +163,28 @@ main {
     box-shadow: var(--shadow-lg);
     border: 1px solid var(--border-color);
     transition: var(--transition);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
 }
 
 .section:hover {
     box-shadow: var(--shadow-xl);
     transform: translateY(-2px);
+}
+
+/* 2 Columns on tablets */
+@media (min-width: 768px) {
+    .section {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 3 Columns on desktop */
+@media (min-width: 1200px) {
+    .section {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 .section h2 {
@@ -180,6 +197,7 @@ main {
     background-clip: text;
     position: relative;
     padding-bottom: 0.5rem;
+    grid-column: 1 / -1;
 }
 
 .section h2::after {
@@ -197,14 +215,15 @@ main {
     font-size: 1.2rem;
     font-weight: 600;
     color: var(--primary-color);
-    margin: 2rem 0 1rem 0;
+    margin: 0 0 1rem 0;
+    grid-column: 1 / -1;
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
 .element-container {
-    margin-bottom: 1.5rem;
+    margin-bottom: 0;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -839,6 +858,8 @@ footer {
 
     .section {
         padding: 1.5rem;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 
     .section h2 {
