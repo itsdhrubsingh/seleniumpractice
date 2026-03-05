@@ -8,7 +8,7 @@ from configs.config import Config
 def pytest_addoption(parser):
     """Add command line options to pytest."""
     parser.addoption(
-        "--env", action="store", default="prod", help="Environment to run tests against: dev, stage, prod"
+        "--env", action="store", default="prod", help="Environment to run tests against: dev, qa, prod"
     )
 
 def pytest_configure(config):

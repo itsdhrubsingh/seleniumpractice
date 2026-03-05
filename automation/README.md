@@ -9,10 +9,10 @@ This folder contains the automated test suite for the Selenium Practice website.
 - `automation/conftest.py`: Pytest fixtures and command-line options.
 
 ## Environments
-The framework supports three environments: `dev`, `stage`, and `prod`.
+The framework supports three environments: `dev`, `qa`, and `prod`.
 Each environment has its own `.env` file:
 - `.env.dev`
-- `.env.stage`
+- `.env.qa`
 - `.env.prod`
 
 ### How to Run Tests
@@ -28,9 +28,9 @@ pytest
 pytest --env dev
 ```
 
-#### Run in Stage Environment
+#### Run in QA Environment
 ```bash
-pytest --env stage
+pytest --env qa
 ```
 
 #### Run with Reporting
