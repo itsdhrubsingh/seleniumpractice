@@ -4,7 +4,16 @@ name: Test and Deploy
 on:
   push:
     branches: ["main"]
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to run tests against'
+        default: 'prod'
+        type: choice
+        options:
+          - dev
+          - stage
+          - prod
 
 # Sets permissions
 permissions:
@@ -38,14 +47,8 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run tests
-        env:
-          BASE_URL: ${{ secrets.BASE_URL || 'https://itsdhrubsingh.github.io/seleniumpractice/' }}
-          BROWSER: chrome
-          HEADLESS: true
-          IMPLICIT_WAIT: 10
-          EXPLICIT_WAIT: 15
         run: |
-          pytest
+          pytest --env ${{ github.event.inputs.environment || 'prod' }}
 
       - name: Upload Test Report
         if: always()

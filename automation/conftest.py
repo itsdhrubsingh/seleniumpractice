@@ -1,8 +1,21 @@
 import pytest
+import os
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from configs.config import Config
+
+def pytest_addoption(parser):
+    """Add command line options to pytest."""
+    parser.addoption(
+        "--env", action="store", default="prod", help="Environment to run tests against: dev, stage, prod"
+    )
+
+def pytest_configure(config):
+    """Configure pytest based on command line options."""
+    env_name = config.getoption("--env").lower()
+    # Reload config with the specified environment
+    Config.load(env_name)
 
 @pytest.fixture(scope="function")
 def driver():
