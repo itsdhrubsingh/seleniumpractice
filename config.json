@@ -1,0 +1,17 @@
+{
+    "dev": {
+        "ENV_NAME": "DEV*",
+        "ENV_VERSION": "v2.0",
+        "ENV_DESC": "Development Environment"
+    },
+    "qa": {
+        "ENV_NAME": "QA",
+        "ENV_VERSION": "STABLE",
+        "ENV_DESC": "Quality Assurance Environment"
+    },
+    "prod": {
+        "ENV_NAME": "PRODUCTION",
+        "ENV_VERSION": "LIVE",
+        "ENV_DESC": "Live Environment"
+    }
+}
