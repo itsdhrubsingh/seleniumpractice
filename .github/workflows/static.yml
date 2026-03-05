@@ -58,12 +58,12 @@ jobs:
           path: automation/reports/
           retention-days: 30
 
-  # 2. Deploy to GitHub Pages (only if tests pass)
-  deploy:
+  # 2. Deploy to QA (Auto)
+  deploy-qa:
     needs: test
     environment:
-      name: ${{ github.event.inputs.environment || 'prod' }}
-      url: ${{ steps.deployment.outputs.page_url }}
+      name: qa
+      url: ${{ steps.deployment-qa.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -75,5 +75,25 @@ jobs:
         with:
           path: '.'
       - name: Deploy to GitHub Pages
-        id: deployment
+        id: deployment-qa
+        uses: actions/deploy-pages@v4
+
+  # 3. Deploy to Prod (Needs Approval)
+  deploy-prod:
+    needs: deploy-qa
+    environment:
+      name: prod
+      url: ${{ steps.deployment-prod.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+      - name: Deploy to GitHub Pages
+        id: deployment-prod
         uses: actions/deploy-pages@v4
