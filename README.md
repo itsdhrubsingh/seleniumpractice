@@ -26,13 +26,31 @@ This is a comprehensive website designed for practicing Selenium WebDriver locat
 
 ## Getting Started
 
+### Local Development (Template & Build Method)
+
+This project uses a **Template & Build** pattern to automatically generate multiple environments (Dev, QA, Prod) from a single source of truth.
+
 1. Clone or download this repository
-2. Open a terminal in the project directory
-3. Run the local server:
+2. Make your UI changes inside `template.html` (Do NOT create dev/qa folders manually)
+3. Open a terminal in the project directory
+4. Run the build script to generate the environment folders:
+   ```bash
+   python build.py
+   ```
+5. Run the local server:
    ```bash
    python -m http.server 8000
    ```
-4. Open your browser and navigate to `http://localhost:8000`
+6. Open your browser and navigate to `http://localhost:8000`
+
+## CI/CD Promotion Pipeline
+
+This repository uses GitHub Actions for a professional CI/CD pipeline:
+1. **Build**: Generates the environments from `template.html` based on `config.json`.
+2. **Deploy to QA (Auto)**: The site is automatically deployed to the `/qa/` subdirectory.
+3. **Test QA**: The Selenium Pytest framework runs tests against the new QA environment.
+4. **Deploy to Prod (Approval Required)**: If tests pass, GitHub pauses and waits for manual approval in the Environments tab.
+5. **Test Prod**: Once approved, it deploys to the root and runs a final round of tests against the live Production site.
 
 ## Usage for Selenium Practice
 

@@ -10,10 +10,11 @@ This folder contains the automated test suite for the Selenium Practice website.
 
 ## Environments
 The framework supports three environments: `dev`, `qa`, and `prod`.
+These correspond to the generated subdirectories in the GitHub Pages portal.
 Each environment has its own `.env` file:
-- `.env.dev`
-- `.env.qa`
-- `.env.prod`
+- `.env.dev` (tests against `/dev/`)
+- `.env.qa` (tests against `/qa/`)
+- `.env.prod` (tests against the Prod root URL)
 
 ### How to Run Tests
 By default, tests run against the **production** environment.
