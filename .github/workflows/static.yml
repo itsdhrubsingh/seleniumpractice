@@ -20,6 +20,9 @@ jobs:
   # 1. Run Selenium Tests
   test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: automation
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -49,7 +52,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: pytest-report
-          path: reports/
+          path: automation/reports/
           retention-days: 30
 
   # 2. Deploy to GitHub Pages (only if tests pass)
