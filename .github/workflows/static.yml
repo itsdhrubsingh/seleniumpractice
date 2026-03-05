@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       environment:
-        description: 'Environment to run tests against'
+        description: 'Target Environment'
         default: 'prod'
         type: choice
         options:
@@ -62,7 +62,7 @@ jobs:
   deploy:
     needs: test
     environment:
-      name: github-pages
+      name: ${{ github.event.inputs.environment || 'prod' }}
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
