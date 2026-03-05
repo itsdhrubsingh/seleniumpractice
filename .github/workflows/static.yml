@@ -58,12 +58,9 @@ jobs:
           path: automation/reports/
           retention-days: 30
 
-  # 2. Deploy to QA (Auto)
-  deploy-qa:
+  # 2. Build and Upload Pages Artifact
+  build:
     needs: test
-    environment:
-      name: qa
-      url: ${{ steps.deployment-qa.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -74,11 +71,20 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
+
+  # 3. Deploy to QA (Auto)
+  deploy-qa:
+    needs: build
+    environment:
+      name: qa
+      url: ${{ steps.deployment-qa.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment-qa
         uses: actions/deploy-pages@v4
 
-  # 3. Deploy to Prod (Needs Approval)
+  # 4. Deploy to Prod (Needs Approval)
   deploy-prod:
     needs: deploy-qa
     environment:
@@ -86,14 +92,6 @@ jobs:
       url: ${{ steps.deployment-prod.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: '.'
       - name: Deploy to GitHub Pages
         id: deployment-prod
         uses: actions/deploy-pages@v4
