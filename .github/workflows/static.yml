@@ -47,7 +47,6 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run tests
-        continue-on-error: true
         run: |
           pytest --env ${{ github.event.inputs.environment || 'prod' }}
 
